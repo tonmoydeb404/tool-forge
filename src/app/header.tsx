@@ -12,10 +12,12 @@ const HeaderSection = (props: Props) => {
   return (
     <header className="px-5 py-3 border-b">
       <div className="flex items-center gap-3">
-        {selectedTool && (
+        {selectedTool ? (
           <Button variant="ghost" size="sm" onClick={closeTool}>
             <ArrowLeft className="h-4 w-4" />
           </Button>
+        ) : (
+          <img src="/icon-with-shadow.svg" className="size-12" />
         )}
         <div>
           <h1 className="text-xl font-bold">
