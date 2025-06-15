@@ -4,13 +4,17 @@ import { Card, CardContent } from "../ui/card";
 
 type Props = {
   data: TTool;
+  onClick: () => void;
 };
 
 const ToolCard = (props: Props) => {
-  const { data: tool } = props;
+  const { data: tool, onClick } = props;
   const IconComponent = tool.icon;
   return (
-    <Card className="cursor-pointer hover:shadow-md transition-shadow py-0">
+    <Card
+      className="cursor-pointer hover:shadow-md transition-shadow duration-200 p-0"
+      onClick={onClick}
+    >
       <CardContent className="p-4">
         <div className="flex items-start space-x-3">
           <div
@@ -20,7 +24,7 @@ const ToolCard = (props: Props) => {
             <IconComponent className="h-5 w-5 text-white" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between mb-0">
+            <div className="flex items-center justify-between mb-1">
               <h3 className="font-semibold text-sm truncate">{tool.name}</h3>
               <Badge variant="secondary" className="text-xs">
                 {tool.category}
