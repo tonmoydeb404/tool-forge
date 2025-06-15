@@ -99,10 +99,10 @@ export const LoremIpsumGenerator = () => {
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <Label>Generated Text</Label>
-        <div className="flex gap-2 mb-2">
-          <Button size="sm" onClick={copyToClipboard} disabled={!text}>
-            <Copy className="h-4 w-4 mr-2" />
+        <div className="flex justify-between gap-2 mb-2">
+          <Label>Generated Text</Label>
+          <Button size="xs" onClick={copyToClipboard} disabled={!text}>
+            <Copy size={12} />
             Copy
           </Button>
         </div>
@@ -110,7 +110,7 @@ export const LoremIpsumGenerator = () => {
           value={text}
           readOnly
           placeholder="Click generate to create lorem ipsum text"
-          className="min-h-[200px]"
+          className="h-[100px] text-xs"
         />
       </div>
 

@@ -13,8 +13,8 @@ const ListSection = (props: Props) => {
   const { openTool, selectedTool } = props;
   return (
     <div
-      className={`transition-transform duration-300 ease-in-out ${
-        selectedTool ? "-translate-x-full" : "translate-x-0"
+      className={`transition-transform duration-300 ease-in-out overflow-hidden ${
+        selectedTool ? "-translate-x-full -ml-[100%]" : "translate-x-0"
       }`}
     >
       <div className="relative mb-4">

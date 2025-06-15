@@ -69,8 +69,9 @@ export const PasswordGenerator = () => {
               onCheckedChange={(checked) =>
                 setIncludeUppercase(checked === true)
               }
+              id="uppercase"
             />
-            <Label>Include Uppercase (A-Z)</Label>
+            <Label htmlFor="uppercase">Include Uppercase (A-Z)</Label>
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox
@@ -78,22 +79,25 @@ export const PasswordGenerator = () => {
               onCheckedChange={(checked) =>
                 setIncludeLowercase(checked === true)
               }
+              id="lowercase"
             />
-            <Label>Include Lowercase (a-z)</Label>
+            <Label htmlFor="lowercase">Include Lowercase (a-z)</Label>
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox
               checked={includeNumbers}
               onCheckedChange={(checked) => setIncludeNumbers(checked === true)}
+              id="numbers"
             />
-            <Label>Include Numbers (0-9)</Label>
+            <Label htmlFor="numbers">Include Numbers (0-9)</Label>
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox
               checked={includeSymbols}
               onCheckedChange={(checked) => setIncludeSymbols(checked === true)}
+              id="symbols"
             />
-            <Label>Include Symbols (!@#$...)</Label>
+            <Label htmlFor="symbols">Include Symbols (!@#$...)</Label>
           </div>
         </div>
 
