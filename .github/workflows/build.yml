@@ -53,15 +53,20 @@ jobs:
 
       - name: Create extension package
         run: |
-          cd dist-${{ matrix.browser }}
-          zip -r ../tool-forge-${{ matrix.browser }}-${{ steps.version.outputs.VERSION }}.zip .
+          if [ -d "dist" ]; then
+            cd dist
+            zip -r ../tool-forge-${{ matrix.browser }}-${{ steps.version.outputs.VERSION }}.zip .
+          else
+            echo "Error: dist directory not found"
+            exit 1
+          fi
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: tool-forge-${{ matrix.browser }}-${{ steps.version.outputs.VERSION }}
           path: |
-            dist-${{ matrix.browser }}/
+            dist/
             tool-forge-${{ matrix.browser }}-${{ steps.version.outputs.VERSION }}.zip
           retention-days: 30
 
