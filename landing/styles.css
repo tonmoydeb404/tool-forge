@@ -656,11 +656,6 @@ body {
 .footer-logo-icon {
   width: 48px;
   height: 48px;
-  background-color: var(--light-bg);
-  border-radius: var(--border-radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .footer-logo-icon img {
