@@ -1,6 +1,11 @@
 {
   "{{chrome}}.manifest_version": 3,
   "{{firefox}}.manifest_version": 2,
+  "name": "Tool Forge",
+  "description": "A powerful set of utility tools in your browser - Password Generator, Lorem Ipsum Generator, JWT Decoder, and more.",
+  "version": "1.0.0",
+  "author": "Tonmoy Deb",
+  "homepage_url": "https://github.com/tonmoydeb404/tool-forge",
   "icons": {
     "16": "icon/icon16.png",
     "32": "icon/icon32.png",
@@ -8,15 +13,44 @@
     "128": "icon/icon128.png"
   },
   "{{chrome}}.action": {
-    "default_popup": "src/popup.html"
+    "default_popup": "src/popup.html",
+    "default_title": "Tool Forge - Utility Tools",
+    "default_icon": {
+      "16": "icon/icon16.png",
+      "32": "icon/icon32.png",
+      "48": "icon/icon48.png",
+      "128": "icon/icon128.png"
+    }
   },
   "{{firefox}}.browser_action": {
-    "default_popup": "src/popup.html"
+    "default_popup": "src/popup.html",
+    "default_title": "Tool Forge - Utility Tools",
+    "default_icon": {
+      "16": "icon/icon16.png",
+      "32": "icon/icon32.png",
+      "48": "icon/icon48.png",
+      "128": "icon/icon128.png"
+    }
   },
   "background": {
     "{{chrome}}.service_worker": "src/background.ts",
     "{{firefox}}.scripts": [
       "src/background.ts"
-    ]
+    ],
+    "{{firefox}}.persistent": false
+  },
+  "permissions": [
+    "storage"
+  ],
+  "{{chrome}}.host_permissions": [],
+  "{{firefox}}.applications": {
+    "gecko": {
+      "id": "tool-forge@tonmoydeb.com",
+      "strict_min_version": "109.0"
+    }
+  },
+  "content_security_policy": {
+    "{{chrome}}.extension_pages": "script-src 'self'; object-src 'self';",
+    "{{firefox}}.extension_pages": "script-src 'self'; object-src 'self';"
   }
 }
