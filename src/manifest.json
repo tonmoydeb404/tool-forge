@@ -43,8 +43,7 @@
   "{{chrome}}.host_permissions": [],
   "{{firefox}}.applications": {
     "gecko": {
-      "id": "toolforge-dev@tonmoydeb.com",
-      "strict_min_version": "109.0"
+      "id": "toolforge@tonmoydeb.com"
     }
   }
 }
