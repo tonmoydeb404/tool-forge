@@ -4,25 +4,25 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to build (optional, will use tag if available)'
+        description: "Version to build (optional, will use tag if available)"
         required: false
         type: string
   push:
-    tags: 
-      - 'v*'
+    tags:
+      - "v*"
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         browser: [chrome, firefox]
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Get version
         id: version
         run: |
@@ -33,29 +33,27 @@ jobs:
           else
             echo "VERSION=dev-$(date +%Y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
           fi
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'pnpm'
-          
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 10
-          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "pnpm"
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        
+
       - name: Build for ${{ matrix.browser }}
         run: pnpm run build:${{ matrix.browser }}
-        
+
       - name: Create extension package
         run: |
           cd dist-${{ matrix.browser }}
           zip -r ../tool-forge-${{ matrix.browser }}-${{ steps.version.outputs.VERSION }}.zip .
-          
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -69,25 +67,25 @@ jobs:
     if: github.ref_type == 'tag'
     needs: build
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Get version
         id: version
         run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-        
+
       - name: Download Chrome build
         uses: actions/download-artifact@v4
         with:
           name: tool-forge-chrome-${{ steps.version.outputs.VERSION }}
-          
+
       - name: Download Firefox build
         uses: actions/download-artifact@v4
         with:
           name: tool-forge-firefox-${{ steps.version.outputs.VERSION }}
-          
+
       - name: Create Draft Release
         uses: softprops/action-gh-release@v1
         with:
