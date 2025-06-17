@@ -193,17 +193,7 @@ body {
 .nav-logo {
   width: 40px;
   height: 40px;
-  background-color: var(--light-bg);
-  border-radius: var(--border-radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   animation: glow 2s ease-in-out infinite alternate;
-}
-
-.nav-logo img {
-  width: 36px;
-  height: 36px;
 }
 
 .nav-title {
