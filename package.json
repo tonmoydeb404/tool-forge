@@ -1,15 +1,16 @@
 {
   "name": "tool-forge",
   "private": true,
+  "description": "A powerful set of utility tools in your browser - Password Generator, Lorem Ipsum Generator, JWT Decoder, and more.",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:chrome": "cross-env TARGET=chrome vite",
-    "dev:firefox": "cross-env TARGET=firefox vite",
+    "dev:chrome": "TARGET=chrome vite",
+    "dev:firefox": "TARGET=firefox vite",
     "build": "tsc && vite build",
-    "build:chrome": "tsc && cross-env TARGET=chrome vite build --outDir dist-chrome",
-    "build:firefox": "tsc && cross-env TARGET=firefox vite build --outDir dist-firefox"
+    "build:chrome": "TARGET=chrome pnpm build",
+    "build:firefox": "TARGET=firefox pnpm build"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.2",
