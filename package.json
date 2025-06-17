@@ -2,7 +2,7 @@
   "name": "tool-forge",
   "private": true,
   "description": "A powerful set of utility tools in your browser - Password Generator, Lorem Ipsum Generator, JWT Decoder, and more.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
