@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./public/icon-with-shadow.svg" alt="Tool Forge Icon" width="128" height="128">
+<img src="./public/logo.svg" alt="Tool Forge Icon" width="128" height="128">
   
 # Tool Forge
 **A powerful set of utility tools in your browser**
