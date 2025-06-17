@@ -11,6 +11,9 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -65,9 +68,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tool-forge-${{ matrix.browser }}-${{ steps.version.outputs.VERSION }}
-          path: |
-            dist/
-            tool-forge-${{ matrix.browser }}-${{ steps.version.outputs.VERSION }}.zip
+          path: tool-forge-${{ matrix.browser }}-${{ steps.version.outputs.VERSION }}.zip
           retention-days: 30
 
   release:
