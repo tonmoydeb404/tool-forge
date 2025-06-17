@@ -17,7 +17,7 @@ const HeaderSection = (props: Props) => {
             <ArrowLeft className="h-4 w-4" />
           </Button>
         ) : (
-          <img src="/icon-with-shadow.svg" className="size-12" />
+          <img src="/logo.svg" className="size-12" />
         )}
         <div>
           <h1 className="text-xl font-bold">

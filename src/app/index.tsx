@@ -1,5 +1,5 @@
 import { TTool } from "@/types/tool";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeaderSection from "./header";
 import ListSection from "./list";
 import ToolSection from "./tool";
@@ -16,6 +16,25 @@ const App = (props: Props) => {
   const closeTool = () => {
     setSelectedTool(null);
   };
+
+  useEffect(() => {
+    const applyTheme = () => {
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const theme = systemPrefersDark ? "dark" : "light";
+      document.documentElement.className = theme;
+    };
+
+    applyTheme();
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", applyTheme);
+
+    return () => {
+      mediaQuery.removeEventListener("change", applyTheme);
+    };
+  }, []);
 
   return (
     <>
